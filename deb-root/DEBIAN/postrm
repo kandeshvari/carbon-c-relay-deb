@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "purge" ]; then
+	deluser --system carbon-c-relay || true
+	rm -rf /opt/carbon-c-relay || true
+	rm -rf /var/log/carbon-c-relay || true
+	rm -rf /etc/carbon-c-relay || true
+fi

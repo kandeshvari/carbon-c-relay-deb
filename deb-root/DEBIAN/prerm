@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+
+stop carbon-c-relay || true

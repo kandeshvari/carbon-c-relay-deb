@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+case $1 in
+    configure)
+        mkdir -p /var/log/carbon-c-relay
+        if ! getent passwd carbon-c-relay > /dev/null 2>&1 ; then
+            adduser --system --group --disabled-login --disabled-password --home /opt/carbon-c-relay carbon-c-relay
+            chown carbon-c-relay:carbon-c-relay /var/log/carbon-c-relay
+        fi
+
+    ;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
